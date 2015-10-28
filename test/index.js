@@ -560,19 +560,14 @@ describe('Nightmare', function () {
       result.height.should.eql(size.height);
     });
 
-    /*
-    NOT AVAILABLE UPSTREAM in electron
-
     it('should set headers', function*() {
       var headers = yield Nightmare()
-        .headers({ 'X-Nightmare-Header': 'hello world' })
-        .goto(fixture('headers'))
+        .goto(fixture('headers'), { headers: { 'X-Nightmare-Header': 'hello world' } })
         .evaluate(function () {
           return JSON.parse(document.querySelector('pre').innerHTML);
         });
       headers['x-nightmare-header'].should.equal('hello world');
     });
-    */
 
     it('should allow web-preferece settings', function*() {
       nightmare = Nightmare({'web-preferences': {'web-security': false}});
